@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
 	'corsheaders',
 	'rest_framework',
-	'rest_framework_simplejwt',
+	#'rest_framework_simplejwt',
 	'tasks.apps.TasksConfig',
 	'authapp.apps.AuthappConfig',
 	'tasks_viewset.apps.TasksViewsetConfig',
@@ -48,7 +48,10 @@ INSTALLED_APPS = [
 	'django_filters',
 
 	'users.apps.UsersConfig',
-	'versioned_todo.apps.VersionedTodoConfig'
+	#'versioned_todo.apps.VersionedTodoConfig'
+	#todo| lagardo
+	"rest_framework_simplejwt",
+	"rest_framework.authtoken"
 ]
 
 MIDDLEWARE = [
@@ -177,3 +180,5 @@ CORS_ORIGIN_WHITELIST = [
 
 
 #CORS_ALLOW_ALL_ORIGINS = True
+#AGREGAR
+AUTH_USER_MODEL = "users.User"

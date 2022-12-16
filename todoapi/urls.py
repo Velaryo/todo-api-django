@@ -24,5 +24,9 @@ urlpatterns = [
 	path(r'api/v1/', include('tasks.urls')),
 	path(r'api-auth/', include('authapp.urls')),
 
-	path(r'api/v1/', include("users.urls"))
+	path(r'api/v1/', include("users.urls")),
+
+	#todo| lagardo
+	#path('api/users/', include("users.urls")),
+
 ]
