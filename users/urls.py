@@ -34,6 +34,10 @@ urlpatterns = [
 urlpatterns += router.urls
 #todo| FIN lagardo
 
+#todo| Linder
+
+#todo| FIN Linder
+
 urlpatterns += user_router.urls
 urlpatterns += user_custom_router.urls
 

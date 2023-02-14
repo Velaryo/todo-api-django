@@ -21,7 +21,7 @@ class TaskView(ModelViewSet):
 class TodoView(APIView):
 	'''APIView YA TIENE GET, POST, PUT, DELETE ,PATCH'''
 	def get(self, request):
-		todo = Todo.objects.all()
+		todo = Todo.objects.all().order_by('-id')
 		serializer = TodoSerializer(todo, many=True)
 		return Response({
 			"ok": True,

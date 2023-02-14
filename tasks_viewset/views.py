@@ -4,12 +4,13 @@ from tasks.models import Todo
 from tasks.serializers import TodoSerializer
 from rest_framework.viewsets import ModelViewSet, \
 	ReadOnlyModelViewSet
-
 from .pagination import SimplePagination
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
-
 from rest_framework.decorators import action
+
+from rest_framework.throttling import \
+	AnonRateThrottle, UserRateThrottle
 
 class TaskViewSet(ModelViewSet):
 	queryset = Todo.objects.all()
@@ -19,6 +20,8 @@ class TaskViewSet(ModelViewSet):
 	filter_backends = [DjangoFilterBackend, filters.SearchFilter]
 	filterset_fields = ['title', 'body']
 	search_fields = ['title', 'body']
+
+	throttle_classes = [UserRateThrottle]
 
 	#url y el asename
 	#agrega funcioes extra a una clase 

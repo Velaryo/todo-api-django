@@ -4,3 +4,9 @@ djangorestframework-simplejwt
 mysqlclient
 django-cors-headers
 ipython
+django-seed
+psycopg2-binary
+django-filter
+drf-yasg
+gunicorn
+whitenoise

@@ -51,7 +51,9 @@ INSTALLED_APPS = [
 	#'versioned_todo.apps.VersionedTodoConfig'
 	#todo| lagardo
 	"rest_framework_simplejwt",
-	"rest_framework.authtoken"
+	"rest_framework.authtoken",
+
+   	'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -96,7 +98,8 @@ DATABASES = {
         'NAME': 'todoapi',
 		'USER': 'root',
 		'PASSWORD': 'mile123',
-		'HOST': 'localhost',
+		#'HOST': 'localhost',
+        'HOST': '0.0.0.0',
 		'PORT': '3306'
 
     }
@@ -161,7 +164,23 @@ REST_FRAMEWORK = {
 	"PAGE_SIZE": 20, #CANT DE ITEMS X PAGINA
 	"DEFAULT_FILTER_BACKENDS": [
 		'django_filters.rest_framework.DjangoFilterBackend'
-	]
+	],
+	#todo| Linder 16-dic
+	"DEFAULT_THROTTLE_CLASSES": [
+		#users anonimos
+        'rest_framework.throttling.AnonRateThrottle',
+		#users logeados
+		'rest_framework.throttling.UserRateThrottle',
+		#eprmite crear los throttle_scope
+		'rest_framework.throttling.ScopedRateThrottle'
+    ],
+	#peticiones al día por usuario
+	"DEFAULT_THROTTLE_RATES": {
+		'anon': '1000/day',
+		'user': '1000/day',
+
+		'generate_code': '1/minute'
+	}
 }
 
 from datetime import timedelta
@@ -182,3 +201,7 @@ CORS_ORIGIN_WHITELIST = [
 #CORS_ALLOW_ALL_ORIGINS = True
 #AGREGAR
 AUTH_USER_MODEL = "users.User"
+
+
+
+
